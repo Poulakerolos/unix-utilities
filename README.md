@@ -1,19 +1,28 @@
-# Unix Utilities
+# Unix Utilities and Low-Level C Tools
 
-## pwd.c
-Prints current working directory. Uses `getcwd()`.
+Small Unix-style utilities and string-library exercises written in C during Embedded Linux and Systems Programming training.
 
-## echo.c
-Prints command-line arguments separated by spaces. Uses `write()`.
+## Why it matters
 
-## cp.c
-Copies a file. Uses `open()`, `read()`, `write()`, `close()`.
+- Exercises POSIX file and process-adjacent APIs directly rather than wrapping library calls behind a framework.
+- Includes a team-built assembly string-library artifact, clearly separated from the individual C work.
 
-## mv.c
-Copies a file then deletes the original. Uses `open()`, `read()`, `write()`, `close()`, `unlink()`.
+## How it's built
 
-## femtoshell.c
-a shell that uses 2 commands : echo and exit
-## picoshell.c
-A lightweight Unix shell written in C featuring dynamic memory management, POSIX process execution (fork/execvp), custom 
-tokenization, builtin command handling, and robust status tracking.
+- [`core-utils/`](core-utils/) - `cp`, `mv`, `pwd`, `echo`, `mycat`, and a word-count exercise using low-level file operations.
+- [`string-lib-c/`](string-lib-c/) - C implementations and iterations of string operations such as length, concatenation, and bounded concatenation.
+- [`string-lib-asm/`](string-lib-asm/) - **team project**: C header and sample program for a raw-assembly string library (`Strcat`, `Strncat`, `Strlength`).
+
+## Key results
+
+- Core utilities use primitives such as `open`, `read`, `write`, `close`, `getcwd`, and `unlink`.
+- The assembly library is included as a team deliverable; it is not presented as sole-authored work.
+
+## How to run
+
+Compile an individual C utility on Linux, for example:
+
+```sh
+gcc -Wall -Wextra -o mycat core-utils/mycat.c
+./mycat path/to/file
+```
